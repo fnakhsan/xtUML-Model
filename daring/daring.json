@@ -1,91 +1,91 @@
 {
 	"type": "subsystem",
-	"id": "s1",
-	"name": "daring",
+	"sub_id": "s1",
+	"sub_name": "daring",
 	"model": [
 		{
 			"type": "class",
-			"name": "mahasiswa",
+			"class_id": "1",
+			"class_name": "mahasiswa",
 			"KL": "mhs",
-			"id": "1",
 			"attributes": [
 				{
-					"attributeType": "naming_attribute",
-					"name": "nim",
-					"dataTypes": "ID"
+					"attribute_type": "naming_attribute",
+					"attribute_name": "nim",
+					"data_type": "id"
 				},
 				{
-					"attributeType": "descriptive_attribute",
-					"name": "status",
-					"initialValue": "aktif",
-					"dataTypes": "state"
+					"attribute_type": "descriptive_attribute",
+					"attribute_name": "status",
+					"default_value": "mhs_status.aktif",
+					"data_type": "state"
 				},
 				{
-					"attributeType": "descriptive_attribute",
-					"name": "nama",
-					"dataTypes": "string"
+					"attribute_type": "descriptive_attribute",
+					"attribute_name": "nama",
+					"data_type": "string"
 				},
 				{
-					"attributeType": "descriptive_attribute",
-					"name": "semester",
-					"dataTypes": "integer"
+					"attribute_type": "descriptive_attribute",
+					"attribute_name": "semester",
+					"data_type": "integer"
 				},
 				{
-					"attributeType": "descriptive_attribute",
-					"name": "ipk",
-					"dataTypes": "real"
+					"attribute_type": "descriptive_attribute",
+					"attribute_name": "ipk",
+					"data_type": "real"
 				}
 			]
 		},
 		{
 			"type": "class",
-			"name": "dosen",
+			"class_id": "2",
+			"class_name": "dosen",
 			"KL": "dsn",
-			"id": "2",
 			"attributes": [
 				{
-					"attributeType": "naming_attribute",
-					"name": "nip",
-					"dataTypes": "ID"
+					"attribute_type": "naming_attribute",
+					"attribute_name": "nip",
+					"data_type": "id"
 				},
 				{
-					"attributeType": "descriptive_attribute",
-					"name": "status",
-					"initialValue": "aktif",
-					"dataTypes": "state"
+					"attribute_type": "descriptive_attribute",
+					"attribute_name": "status",
+					"default_value": "dsn_status.aktif",
+					"data_type": "state"
 				},
 				{
-					"attributeType": "descriptive_attribute",
-					"name": "nama",
-					"dataTypes": "string"
+					"attribute_type": "descriptive_attribute",
+					"attribute_name": "nama",
+					"data_type": "string"
 				}
 			]
 		},
 		{
 			"type": "class",
-			"name": "mata_kuliah",
+			"class_id": "3",
+			"class_name": "mata_kuliah",
 			"KL": "mtk",
-			"id": "3",
 			"attributes": [
 				{
-					"attributeType": "naming_attribute",
-					"name": "matkul_id",
-					"dataTypes": "ID"
+					"attribute_type": "naming_attribute",
+					"attribute_name": "matkul_id",
+					"data_type": "id"
 				},
 				{
-					"attributeType": "descriptive_attribute",
-					"name": "nama",
-					"dataTypes": "string"
+					"attribute_type": "descriptive_attribute",
+					"attribute_name": "nama",
+					"data_type": "string"
 				},
 				{
-					"attributeType": "descriptive_attribute",
-					"name": "curriculum",
-					"dataTypes": "integer"
+					"attribute_type": "descriptive_attribute",
+					"attribute_name": "curriculum",
+					"data_type": "integer"
 				},
 				{
-					"attributeType": "descriptive_attribute",
-					"name": "required_semester",
-					"dataTypes": "integer"
+					"attribute_type": "descriptive_attribute",
+					"attribute_name": "required_semester",
+					"data_type": "integer"
 				}
 			]
 		},
@@ -94,29 +94,108 @@
 			"name": "R1",
 			"class": [
 				{
-					"id": "1",
-					"className": "mahasiswa"
+					"class_id": "1",
+					"class_name": "mahasiswa"
 				},
 				{
-					"id": "3",
-					"className": "mata_kuliah"
+					"class_id": "3",
+					"class_name": "mata_kuliah"
 				}
 			],
 			"model": {
-				"type": "associationClass",
-				"name": "mahasiswa_matakuliah",
-				"KL": "mhs_mtkl",
-				"id": "1",
+				"type": "association_class",
+				"class_id": "4",
+				"class_name": "mahasiswa_matakuliah",
+				"KL": "mhs_mtk",
 				"attributes": [
 					{
-						"attributeType": "referential_attribute",
-						"name": "matkul_id",
-						"dataTypes": "ID"
+						"attribute_type": "naming_attribute",
+						"attribute_name": "mhs_mtk_id",
+						"data_type": "id"
 					},
 					{
-						"attributeType": "referential_attribute",
-						"name": "nim",
-						"dataTypes": "ID"
+						"attribute_type": "referential_attribute",
+						"attribute_name": "matkul_id",
+						"data_type": "id"
+					},
+					{
+						"attribute_type": "referential_attribute",
+						"attribute_name": "nim",
+						"data_type": "id"
+					}
+				]
+			}
+		},
+		{
+			"type": "association",
+			"name": "R2",
+			"class": [
+				{
+					"class_id": "2",
+					"class_name": "dosen"
+				},
+				{
+					"class_id": "3",
+					"class_name": "mata_kuliah"
+				}
+			],
+			"model": {
+				"type": "association_class",
+				"class_id": "5",
+				"class_name": "dosen_matakuliah",
+				"KL": "dsn_mtk",
+				"attributes": [
+					{
+						"attribute_type": "naming_attribute",
+						"attribute_name": "dsn_mtk_id",
+						"data_type": "id"
+					},
+					{
+						"attribute_type": "referential_attribute",
+						"attribute_name": "matkul_id",
+						"data_type": "id"
+					},
+					{
+						"attribute_type": "referential_attribute",
+						"attribute_name": "nip",
+						"data_type": "id"
+					}
+				]
+			}
+		},
+		{
+			"type": "association",
+			"name": "R3",
+			"class": [
+				{
+					"class_id": "4",
+					"class_name": "mahasiswa_matakuliah"
+				},
+				{
+					"class_id": "5",
+					"class_name": "dosen_matakuliah"
+				}
+			],
+			"model": {
+				"type": "association_class",
+				"class_id": "6",
+				"class_name": "mahasiswa_dosen_matakuliah",
+				"KL": "mhs_dsn_mtk",
+				"attributes": [
+					{
+						"attribute_type": "naming_attribute",
+						"attribute_name": "mhs_dsn_mtk_id",
+						"data_type": "id"
+					},
+					{
+						"attribute_type": "referential_attribute",
+						"attribute_name": "mhs_mtk_id",
+						"data_type": "id"
+					},
+					{
+						"attribute_type": "referential_attribute",
+						"attribute_name": "dsn_mtk_id",
+						"data_type": "id"
 					}
 				]
 			}
