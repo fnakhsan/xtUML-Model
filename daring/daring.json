@@ -1,0 +1,125 @@
+{
+	"type": "subsystem",
+	"id": "s1",
+	"name": "daring",
+	"model": [
+		{
+			"type": "class",
+			"name": "mahasiswa",
+			"KL": "mhs",
+			"id": "1",
+			"attributes": [
+				{
+					"attributeType": "naming_attribute",
+					"name": "nim",
+					"dataTypes": "ID"
+				},
+				{
+					"attributeType": "descriptive_attribute",
+					"name": "status",
+					"initialValue": "aktif",
+					"dataTypes": "state"
+				},
+				{
+					"attributeType": "descriptive_attribute",
+					"name": "nama",
+					"dataTypes": "string"
+				},
+				{
+					"attributeType": "descriptive_attribute",
+					"name": "semester",
+					"dataTypes": "integer"
+				},
+				{
+					"attributeType": "descriptive_attribute",
+					"name": "ipk",
+					"dataTypes": "real"
+				}
+			]
+		},
+		{
+			"type": "class",
+			"name": "dosen",
+			"KL": "dsn",
+			"id": "2",
+			"attributes": [
+				{
+					"attributeType": "naming_attribute",
+					"name": "nip",
+					"dataTypes": "ID"
+				},
+				{
+					"attributeType": "descriptive_attribute",
+					"name": "status",
+					"initialValue": "aktif",
+					"dataTypes": "state"
+				},
+				{
+					"attributeType": "descriptive_attribute",
+					"name": "nama",
+					"dataTypes": "string"
+				}
+			]
+		},
+		{
+			"type": "class",
+			"name": "mata_kuliah",
+			"KL": "mtk",
+			"id": "3",
+			"attributes": [
+				{
+					"attributeType": "naming_attribute",
+					"name": "matkul_id",
+					"dataTypes": "ID"
+				},
+				{
+					"attributeType": "descriptive_attribute",
+					"name": "nama",
+					"dataTypes": "string"
+				},
+				{
+					"attributeType": "descriptive_attribute",
+					"name": "curriculum",
+					"dataTypes": "integer"
+				},
+				{
+					"attributeType": "descriptive_attribute",
+					"name": "required_semester",
+					"dataTypes": "integer"
+				}
+			]
+		},
+		{
+			"type": "association",
+			"name": "R1",
+			"class": [
+				{
+					"id": "1",
+					"className": "mahasiswa"
+				},
+				{
+					"id": "3",
+					"className": "mata_kuliah"
+				}
+			],
+			"model": {
+				"type": "associationClass",
+				"name": "mahasiswa_matakuliah",
+				"KL": "mhs_mtkl",
+				"id": "1",
+				"attributes": [
+					{
+						"attributeType": "referential_attribute",
+						"name": "matkul_id",
+						"dataTypes": "ID"
+					},
+					{
+						"attributeType": "referential_attribute",
+						"name": "nim",
+						"dataTypes": "ID"
+					}
+				]
+			}
+		}
+	]
+}
