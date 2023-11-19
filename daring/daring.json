@@ -95,11 +95,13 @@
 			"class": [
 				{
 					"class_id": "1",
-					"class_name": "mahasiswa"
+					"class_name": "mahasiswa",
+					"class_multiplicity": "0..*"
 				},
 				{
 					"class_id": "3",
-					"class_name": "mata_kuliah"
+					"class_name": "mata_kuliah",
+					"class_multiplicity": "0..*"
 				}
 			],
 			"model": {
@@ -132,11 +134,13 @@
 			"class": [
 				{
 					"class_id": "2",
-					"class_name": "dosen"
+					"class_name": "dosen",
+					"class_multiplicity": "0..*"
 				},
 				{
 					"class_id": "3",
-					"class_name": "mata_kuliah"
+					"class_name": "mata_kuliah",
+					"class_multiplicity": "1..*"
 				}
 			],
 			"model": {
@@ -169,11 +173,13 @@
 			"class": [
 				{
 					"class_id": "4",
-					"class_name": "mahasiswa_matakuliah"
+					"class_name": "mahasiswa_matakuliah",
+					"class_multiplicity": "1..*"
 				},
 				{
 					"class_id": "5",
-					"class_name": "dosen_matakuliah"
+					"class_name": "dosen_matakuliah",
+					"class_multiplicity": "0..*"
 				}
 			],
 			"model": {
@@ -199,6 +205,146 @@
 					}
 				]
 			}
+		},
+		{
+			"type": "class",
+			"class_id": "7",
+			"class_name": "uang_kuliah_tunggal",
+			"KL": "ukt",
+			"attributes": [
+				{
+					"attribute_type": "naming_attribute",
+					"attribute_name": "ukt_id",
+					"data_type": "id"
+				},
+				{
+					"attribute_type": "referential_attribute",
+					"attribute_name": "prodi_id",
+					"data_type": "id"
+				},
+				{
+					"attribute_type": "descriptive_attribute",
+					"attribute_name": "golongan",
+					"data_type": "string"
+				},
+				{
+					"attribute_type": "descriptive_attribute",
+					"attribute_name": "nominal",
+					"data_type": "integer"
+				}
+			]
+		},
+		{
+			"type": "association",
+			"name": "R4",
+			"class": [
+				{
+					"class_id": "7",
+					"class_name": "uang_kuliah_tunggal",
+					"class_multiplicity": "1..*"
+				},
+				{
+					"class_id": "8",
+					"class_name": "program_studi",
+					"class_multiplicity": "1..1"
+				}
+			]
+		},
+		{
+			"type": "class",
+			"class_id": "8",
+			"class_name": "program_studi",
+			"KL": "prodi",
+			"attributes": [
+				{
+					"attribute_type": "naming_attribute",
+					"attribute_name": "prodi_id",
+					"data_type": "id"
+				},
+				{
+					"attribute_type": "referential_attribute",
+					"attribute_name": "fakultas_id",
+					"data_type": "id"
+				},
+				{
+					"attribute_type": "descriptive_attribute",
+					"attribute_name": "name",
+					"data_type": "string"
+				}
+			]
+		},
+		{
+			"type": "association",
+			"name": "R5",
+			"class": [
+				{
+					"class_id": "8",
+					"class_name": "program_studi",
+					"class_multiplicity": "1..*"
+				},
+				{
+					"class_id": "9",
+					"class_name": "fakultas",
+					"class_multiplicity": "1..1"
+				}
+			]
+		},
+		{
+			"type": "class",
+			"class_id": "9",
+			"class_name": "fakultas",
+			"KL": "fkl",
+			"attributes": [
+				{
+					"attribute_type": "naming_attribute",
+					"attribute_name": "fkl_id",
+					"data_type": "id"
+				},
+				{
+					"attribute_type": "descriptive_attribute",
+					"attribute_name": "name",
+					"data_type": "string"
+				}
+			]
+		},
+		{
+			"type": "class",
+			"class_id": "10",
+			"class_name": "tugas_akhir",
+			"KL": "ta",
+			"attributes": [
+				{
+					"attribute_type": "naming_attribute",
+					"attribute_name": "ta_id",
+					"data_type": "id"
+				},
+				{
+					"attribute_type": "referential_attribute",
+					"attribute_name": "mhs_id",
+					"data_type": "id"
+				},
+				{
+					"attribute_type": "descriptive_attribute",
+					"attribute_name": "name",
+					"data_type": "string"
+				}
+			]
+		},
+		{
+			"type": "association",
+			"name": "R6",
+			"class": [
+				{
+					"class_id": "1",
+					"class_name": "mahasiswa",
+					"class_multiplicity": "1..1"
+				},
+				{
+					"class_id": "9",
+					"class_name": "tugas_akhir",
+					"class_multiplicity": "1..1"
+				}
+			]
 		}
 	]
 }
