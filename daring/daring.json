@@ -88,6 +88,15 @@
 					"attribute_type": "descriptive_attribute",
 					"attribute_name": "nama",
 					"data_type": "string"
+				},
+				{
+					"event_id": "1",
+					"event_name": "PencutianNIlaiBuruk",
+					
+					"class_id": "1",
+					"state_id": "2",
+					"state_name": "cuti",
+					"data_type": "inst_event"
 				}
 			],
 			"states": [
@@ -432,6 +441,150 @@
 					"state_event": ["setPause", "onPause"]
 				}
 			]
-		}
+		},
+
+		{			
+			"type": "class",
+			"class_id": "50",
+			"class_name": "DaftarMatkul",
+			"KL": "DafM",
+			"attributes": [
+			  {
+				"attribute_type": "naming_attribute",
+				"attribute_name": "id_status_pendaftaran",
+				"data_type": "id"
+			  },
+			  {
+				"attribute_type": "descriptive_attribute",
+				"attribute_name": "nama_mata_kuliah",
+				"data_type": "string"
+			  },
+			  {
+				"attribute_type": "descriptive_attribute",
+				"attribute_name": "status_pendaftaran",
+				"default_value": "Terdaftar",
+				"data_type": "state"
+			  }
+			],
+			"states": [
+			  {
+				"state_id": "1",
+				"state_name": "Terdaftar",
+				"state_value": "Terdaftar",
+				"state_type": "string",
+				"state_event": "setTerdaftar",
+				"transitions": [],
+				"action": "// Implementation code here"
+		
+			  },
+			  {
+				"state_id": "2",
+				"state_name": "Dalam Antrian",
+				"state_value": "Dalam Antrian",
+				"state_type": "string",
+				"state_event": "setDalamAntrian",
+				"transitions": [
+					{
+					  "target_state_id": "3",
+					  "target_state": "Menunggu Persetujuan Prodi"              
+					}
+				],
+				"action": "// Implementation code here"
+				
+			  },
+			  {
+				"state_id": "3",
+				"state_name": "Menunggu Persetujuan Prodi",
+				"state_value": "Menunggu Persetujuan Prodi",
+				"state_type": "string",
+				"state_event": "setMenungguPersetujuanProdi",
+				"transitions": [
+					{
+					  "target_state_id": "1",
+					  "target_state": "Terdaftar"              
+					}
+				],
+				"action": "// Implementation code here"
+			  }
+			]
+		  },
+		  {			
+			"type": "class",
+			"class_id": "55",
+			"class_name": "FasilitasKampus",
+			"KL": "FasK",
+			"attributes": [
+			  {
+				"attribute_type": "naming_attribute",
+				"attribute_name": "id_fasilitas",
+				"data_type": "id"
+			  },
+			  {
+				"attribute_type": "descriptive_attribute",
+				"attribute_name": "nama_fasilitas",
+				"data_type": "string"
+			  },		 							  
+			  {
+				"attribute_type": "related_component",
+				"attribute_name": "nama_fasilitas",
+				"data_type": "inst_ref",
+		
+				"related_class_id": "9",
+				"related_class_name": "fakultas"
+			  }			 
+			]
+		  },
+		  {			
+			"type": "class",
+			"class_id": "58",
+			"class_name": "Peminatan",
+			"KL": "Pem",
+			"attributes": [
+			  {
+				"attribute_type": "naming_attribute",
+				"attribute_name": "id_peminatan",
+				"data_type": "id"
+			  },
+			  {
+				"attribute_type": "descriptive_attribute",
+				"attribute_name": "nama_peminatan",
+				"data_type": "string"
+			  },			 						
+			  {
+				"attribute_type": "related_component",
+				"attribute_name": "nama_peminatan",
+				"data_type": "inst_ref_set",
+		
+				"related_class_id": "1",
+				"related_class_name": "mahasiswa"
+			  }			  
+			]
+		  },		  
+		  {			
+			"type": "class",
+			"class_id": "59",
+			"class_name": "PembayaranUKT",
+			"KL": "PemUKT",
+			"attributes": [
+			  {
+				"attribute_type": "naming_attribute",
+				"attribute_name": "id_pembayaran_ukt",
+				"data_type": "id"
+			  },
+			  {
+				"attribute_type": "descriptive_attribute",
+				"attribute_name": "nama_pembayaran_ukt",
+				"data_type": "string"
+			  },					  
+			  {
+				"attribute_type": "related_component",
+				"attribute_name": "TIMER_UKT",
+				"data_type": "inst_ref_<timer>",
+		
+				"related_class_KL": "TIM",
+				"related_class_name": "Timer"
+			  }		
+			]
+		  }
 	]
 }
