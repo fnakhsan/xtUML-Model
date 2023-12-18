@@ -42,14 +42,32 @@
 					"state_name": "aktif",
 					"state_value": "active",
 					"state_type": "string",
-					"state_event": ["setActive","onActive"]
+					"state_event": ["setActive","onActive"],
+					"transitions": [
+						{
+						  "target_state_id": "2",
+						  "target_state": "cuti",
+						  "parameters": [
+							{"parameter_name": "alasan", "parameter_type": "string"}
+						  ]
+						}
+					]
 				},
 				{
 					"state_id": "2",
 					"state_name": "cuti",
 					"state_value": "cuti",
 					"state_type": "string",
-					"state_event": ["setCuti", "onCuti"]
+					"state_event": ["setCuti", "onCuti"],
+					"transitions": [
+						{
+						  "target_state_id": "1",
+						  "target_state": "aktif",
+						  "parameters": [
+							{"parameter_name": "isiKRS", "parameter_type": "boolean"}
+						  ]
+						}
+					]
 				},
 				{
 					"state_id": "3",
